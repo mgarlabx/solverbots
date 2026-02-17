@@ -5,6 +5,7 @@
 const Chats = {
 
     chats: [],
+    newChatHintDismissed: false,
 
     init() {
         this.loadChats();
@@ -40,6 +41,7 @@ const Chats = {
         if (list) {
             list.innerHTML = this.renderChatList();
         }
+        this.syncNewChatHint();
     },
 
     render() {
@@ -48,7 +50,7 @@ const Chats = {
             <div class="chats-header">
                 <h2 class="chats-title">Chats</h2>
                 <div class="chats-header-actions">
-                    <button class="chats-header-btn" id="newChatBtn" title="${t('newChat.title')}" onclick="NewChat.open()">
+                    <button class="chats-header-btn" id="newChatBtn" title="${t('newChat.title')}" onclick="Chats.openNewChat()">
                         ${Icons.pencil}
                     </button>
                 </div>
@@ -63,6 +65,40 @@ const Chats = {
                 ${this.renderChatList()}
             </div>
         `;
+
+        this.syncNewChatHint();
+    },
+
+    openNewChat() {
+        this.newChatHintDismissed = true;
+        this.removeNewChatHint();
+        NewChat.open();
+    },
+
+    removeNewChatHint() {
+        document.querySelector('.chats-new-chat-hint')?.remove();
+    },
+
+    syncNewChatHint() {
+        const actions = document.querySelector('.chats-header-actions');
+        if (!actions) return;
+
+        const currentHint = actions.querySelector('.chats-new-chat-hint');
+
+        if (this.chats.length === 0 && !this.newChatHintDismissed) {
+            if (!currentHint) {
+                actions.insertAdjacentHTML('beforeend', `
+                    <div class="chats-new-chat-hint">${t('newChat.noChats')}</div>
+                `);
+            }
+            return;
+        }
+
+        if (this.chats.length > 0) {
+            this.newChatHintDismissed = false;
+        }
+
+        currentHint?.remove();
     },
 
     renderChatList() {

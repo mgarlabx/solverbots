@@ -32,6 +32,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    position: relative;
 }
 
 .chats-header-btn {
@@ -51,6 +52,47 @@
 .chats-header-btn:hover {
     background: var(--app-bg-tertiary);
     color: var(--app-text-primary);
+}
+
+.chats-new-chat-hint {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 10px);
+    transform: translateY(-50%);
+    background: var(--app-text-secondary);
+    color: var(--app-bg);
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    width: max-content;
+    max-width: 220px;
+    box-shadow: var(--app-shadow);
+    z-index: 20;
+    pointer-events: none;
+    animation: chatsHintFloat 3s infinite ease-in-out;
+}
+
+.chats-new-chat-hint::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    width: 10px;
+    height: 10px;
+    transform: translateY(-50%) rotate(45deg);
+    background: var(--app-text-secondary);
+}
+
+@keyframes chatsHintFloat {
+    0%,
+    100% {
+        transform: translateY(-50%);
+    }
+
+    50% {
+        transform: translateY(calc(-50% - 6px));
+    }
 }
 
 /* Search */
