@@ -1,6 +1,6 @@
 # SolverBots
 
-SolverBots is an interactive chatbot platform based on historical and philosophical personalities. The application allows users to chat with bots that assume the identity of great thinkers, scientists, and historical figures, answering questions in the style and context of each personality.
+SolverBots is an interactive chatbot platform based on historical and philosophical personalities. The application allows users to chat with bots that assume the identity of great thinkers, scientists, and historical figures, answering questions in the style and context of each personality (individually or in group).
 
 ## How It Works
 
@@ -153,7 +153,7 @@ Visual components organized by functionality:
 
 - **Frontend:** Plain HTML, CSS, and JavaScript (no frameworks)
 - **Backend:** PHP
-- **AI:** OpenAI API 
+- **AI:** OpenAI API
 - **External dependencies:**
   - [Marked](https://github.com/markedjs/marked) — Markdown rendering
   - [SolverJS](https://solvertank.tech/solverjs/) — Utility library
