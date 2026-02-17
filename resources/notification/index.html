@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification — Demo</title>
+    <link rel="icon" type="image/png" href="../../img/cubo.png">
+
+    <!-- App CSS (variáveis globais) -->
+    <link rel="stylesheet" href="../app/App.css?v=1.0">
+
+    <!-- Notification CSS -->
+    <link rel="stylesheet" href="Notification.css?v=1.0">
+
+    <!-- Buttons CSS (para os botões de demo) -->
+    <link rel="stylesheet" href="../buttons/Buttons.css?v=1.0">
+
+    <style>
+        body {
+            padding: 2rem;
+            max-width: 960px;
+            margin: 0 auto;
+            background: var(--app-bg-light);
+            color: var(--app-text-dark);
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            margin-bottom: 0.25rem;
+        }
+
+        h1 small {
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            margin: 2.5rem 0 0.75rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--app-border-color);
+        }
+
+        h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #64748b;
+            margin: 1.2rem 0 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .demo-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .demo-section {
+            background: #fff;
+            border: 1px solid var(--app-border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-section h2 {
+            margin-top: 0;
+        }
+
+        .demo-code {
+            background: #f1f5f9;
+            border: 1px solid var(--app-border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.8rem;
+            line-height: 1.7;
+            overflow-x: auto;
+            margin-top: 1rem;
+            color: #334155;
+        }
+
+        .demo-code .comment { color: #94a3b8; }
+        .demo-code .keyword { color: #8b5cf6; }
+        .demo-code .string  { color: #059669; }
+        .demo-code .prop    { color: #2563eb; }
+
+        .demo-note {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Notification <small>componente reutilizável</small></h1>
+    <p style="color:#64748b; margin-bottom:1rem; font-size:0.9rem;">
+        Sistema de notificações com tipos (success, error, warning, info) e duração configurável.
+    </p>
+
+    <!-- ─── Tipos de Notificação ──────────── -->
+    <div class="demo-section">
+        <h2>Tipos de Notificação</h2>
+        <p class="demo-note">Clique num botão para ver a notificação correspondente.</p>
+
+        <h3>Success</h3>
+        <div class="demo-row">
+            <button class="btn btn-primary btn-sm" onclick="Notification.show('Operação realizada com sucesso!', 'success')">
+                Success
+            </button>
+        </div>
+
+        <h3>Error</h3>
+        <div class="demo-row">
+            <button class="btn btn-danger btn-sm" onclick="Notification.show('Ocorreu um erro inesperado.', 'error')">
+                Error
+            </button>
+        </div>
+
+        <h3>Warning</h3>
+        <div class="demo-row">
+            <button class="btn btn-secondary btn-sm" onclick="Notification.show('Atenção: verifique os dados antes de continuar.', 'warning')">
+                Warning
+            </button>
+        </div>
+
+        <h3>Info</h3>
+        <div class="demo-row">
+            <button class="btn btn-ghost btn-sm" onclick="Notification.show('Informação: a sessão expira em 5 minutos.', 'info')">
+                Info
+            </button>
+        </div>
+    </div>
+
+    <!-- ─── Duração Personalizada ─────────── -->
+    <div class="demo-section">
+        <h2>Duração Personalizada</h2>
+        <p class="demo-note">Controle por quanto tempo a notificação fica visível (em milissegundos).</p>
+
+        <div class="demo-row">
+            <button class="btn btn-primary btn-sm" onclick="Notification.show('Desaparece em 1 segundo', 'info', 1000)">
+                1s
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="Notification.show('Desaparece em 3 segundos', 'success', 3000)">
+                3s
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="Notification.show('Desaparece em 5 segundos', 'warning', 5000)">
+                5s
+            </button>
+        </div>
+    </div>
+
+    <!-- ─── Tipo padrão (sem tipo) ────────── -->
+    <div class="demo-section">
+        <h2>Tipo Padrão</h2>
+        <p class="demo-note">Quando nenhum tipo é especificado, usa <code>info</code> por defeito.</p>
+
+        <div class="demo-row">
+            <button class="btn btn-secondary btn-sm" onclick="Notification.show('Notificação com tipo padrão')">
+                Sem tipo (info)
+            </button>
+        </div>
+    </div>
+
+    <!-- ─── Mensagens longas ──────────────── -->
+    <div class="demo-section">
+        <h2>Mensagens Longas</h2>
+        <p class="demo-note">Comportamento com textos mais extensos.</p>
+
+        <div class="demo-row">
+            <button class="btn btn-secondary btn-sm" onclick="Notification.show('Esta é uma mensagem de notificação mais longa para testar como o componente se comporta com textos extensos que podem ocupar várias linhas.', 'info', 4000)">
+                Mensagem longa
+            </button>
+        </div>
+    </div>
+
+    <!-- ─── Código de Exemplo ─────────────── -->
+    <div class="demo-section">
+        <h2>Como usar</h2>
+
+        <div class="demo-code">
+<span class="comment">// Notificação de sucesso (duração padrão: 2s)</span>
+Notification.<span class="prop">show</span>(<span class="string">'Guardado com sucesso!'</span>, <span class="string">'success'</span>);
+
+<span class="comment">// Notificação de erro</span>
+Notification.<span class="prop">show</span>(<span class="string">'Ocorreu um erro.'</span>, <span class="string">'error'</span>);
+
+<span class="comment">// Notificação de aviso</span>
+Notification.<span class="prop">show</span>(<span class="string">'Verifique os dados.'</span>, <span class="string">'warning'</span>);
+
+<span class="comment">// Notificação informativa</span>
+Notification.<span class="prop">show</span>(<span class="string">'Sessão iniciada.'</span>, <span class="string">'info'</span>);
+
+<span class="comment">// Com duração personalizada (5 segundos)</span>
+Notification.<span class="prop">show</span>(<span class="string">'Esta fica 5s visível.'</span>, <span class="string">'success'</span>, <span class="keyword">5000</span>);
+
+<span class="comment">// Sem tipo (usa 'info' por defeito)</span>
+Notification.<span class="prop">show</span>(<span class="string">'Mensagem simples.'</span>);
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../buttons/Buttons.js?v=1.0"></script>
+    <script src="Notification.js?v=1.0"></script>
+
+</body>
+</html>

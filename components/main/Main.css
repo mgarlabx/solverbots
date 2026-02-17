@@ -1,0 +1,17 @@
+/* ========================================
+   Main.css - Layout principal com 3 colunas
+   ======================================== */
+
+.main-container {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-container {
+        position: relative;
+    }
+}

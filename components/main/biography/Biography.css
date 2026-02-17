@@ -1,0 +1,101 @@
+/* ========================================
+   Biography.css - Modal de biografia
+   ======================================== */
+
+.biography-modal {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.45);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1100;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.biography-modal.show {
+	opacity: 1;
+	visibility: visible;
+}
+
+.biography-modal-content {
+	width: min(700px, 92vw);
+	max-height: 78vh;
+	background: var(--app-bg-secondary);
+	border-radius: 14px;
+	border: 1px solid var(--app-border-color);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.biography-modal-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 12px 14px;
+	border-bottom: 1px solid var(--app-border-color);
+}
+
+.biography-modal-header h3 {
+	margin: 0;
+	font-size: 1rem;
+	color: var(--app-text-primary);
+}
+
+.biography-modal-close {
+	width: 34px;
+	height: 34px;
+	border: none;
+	border-radius: 8px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	color: var(--app-text-secondary);
+	cursor: pointer;
+}
+
+.biography-modal-close:hover {
+	background: var(--app-bg-tertiary);
+	color: var(--app-text-primary);
+}
+
+.biography-modal-close svg {
+	width: 18px;
+	height: 18px;
+}
+
+.biography-modal-body {
+	flex: 1;
+	min-height: 0;
+	padding: 14px;
+	overflow-y: scroll;
+	color: var(--app-text-secondary);
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+.biography-modal-body::-webkit-scrollbar {
+	width: 8px;
+}
+
+.biography-modal-body::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.biography-modal-body::-webkit-scrollbar-thumb {
+	background: var(--app-border-color);
+	border-radius: 5px;
+}
+
+.biography-modal-body p {
+	margin: 0 0 10px;
+}
+
+.biography-modal-body p:last-child {
+	margin-bottom: 0;
+}

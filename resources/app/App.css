@@ -1,0 +1,67 @@
+/* ========================================
+   App.css - Estilos Globais
+   ======================================== */
+
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Light Theme (default) */
+:root {
+    --app-primary-color: #2563eb;
+    --app-primary-hover: #1d4ed8;
+    --app-bg: #f8fafc;
+    --app-bg-secondary: #ffffff;
+    --app-bg-tertiary: #f1f5f9;
+    --app-text-primary: #1e293b;
+    --app-text-secondary: #64748b;
+    --app-border-color: #e2e8f0;
+    --app-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --app-overlay: rgba(0, 0, 0, 0.5);
+
+    /* Aliases de compatibilidade */
+    --app-bg-light: var(--app-bg);
+    --app-bg-dark: #1e293b;
+    --app-text-dark: var(--app-text-primary);
+    --app-text-light: #f8fafc;
+}
+
+/* Dark Theme */
+html[data-theme="dark"] {
+    --app-primary-color: #3b82f6;
+    --app-primary-hover: #60a5fa;
+    --app-bg: #0f172a;
+    --app-bg-secondary: #1e293b;
+    --app-bg-tertiary: #334155;
+    --app-text-primary: #f1f5f9;
+    --app-text-secondary: #94a3b8;
+    --app-border-color: #334155;
+    --app-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --app-overlay: rgba(0, 0, 0, 0.7);
+
+    /* Aliases de compatibilidade */
+    --app-bg-light: var(--app-bg);
+    --app-bg-dark: #f1f5f9;
+    --app-text-dark: var(--app-text-primary);
+    --app-text-light: #0f172a;
+}
+
+html, body {
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--app-text-primary);
+    background-color: var(--app-bg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}

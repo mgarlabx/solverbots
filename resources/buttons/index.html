@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttons — Demo</title>
+    <link rel="icon" type="image/png" href="../../img/cubo.png">
+
+    <!-- App CSS (variáveis globais) -->
+    <link rel="stylesheet" href="../app/App.css?v=1.0">
+
+    <!-- Buttons CSS -->
+    <link rel="stylesheet" href="Buttons.css?v=1.0">
+
+    <style>
+        body {
+            padding: 2rem;
+            max-width: 960px;
+            margin: 0 auto;
+            background: var(--app-bg-light);
+            color: var(--app-text-dark);
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            margin-bottom: 0.25rem;
+        }
+
+        h1 small {
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            margin: 2.5rem 0 0.75rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--app-border-color);
+        }
+
+        h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #64748b;
+            margin: 1.2rem 0 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .demo-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .demo-section {
+            background: #fff;
+            border: 1px solid var(--app-border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-section h2 {
+            margin-top: 0;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+            gap: 8px;
+            max-width: 500px;
+        }
+
+        .demo-code {
+            background: #f1f5f9;
+            border: 1px solid var(--app-border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.8rem;
+            line-height: 1.7;
+            overflow-x: auto;
+            margin-top: 1rem;
+            color: #334155;
+        }
+
+        .demo-code .comment { color: #94a3b8; }
+        .demo-code .keyword { color: #8b5cf6; }
+        .demo-code .string  { color: #059669; }
+        .demo-code .prop    { color: #2563eb; }
+
+        .demo-note {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 8px;
+        }
+
+        .demo-toolbar-area {
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Buttons <small>componente reutilizável</small></h1>
+    <p style="color:#64748b; margin-bottom:1rem; font-size:0.9rem;">
+        Sistema de botões com variantes, tamanhos, ícones, tooltips, toolbar e animação processing.
+    </p>
+
+    <!-- ─── Variantes ─────────────────────── -->
+    <div class="demo-section">
+        <h2>Variantes</h2>
+
+        <h3>Primary</h3>
+        <div class="demo-row" id="demo-primary"></div>
+
+        <h3>Secondary</h3>
+        <div class="demo-row" id="demo-secondary"></div>
+
+        <h3>Danger</h3>
+        <div class="demo-row" id="demo-danger"></div>
+
+        <h3>Ghost</h3>
+        <div class="demo-row" id="demo-ghost"></div>
+    </div>
+
+    <!-- ─── Tamanhos ──────────────────────── -->
+    <div class="demo-section">
+        <h2>Tamanhos</h2>
+        <div class="demo-row" id="demo-sizes"></div>
+    </div>
+
+    <!-- ─── Com Ícone + Texto ─────────────── -->
+    <div class="demo-section">
+        <h2>Botões com Ícone + Texto</h2>
+        <div class="demo-row" id="demo-icon-text"></div>
+    </div>
+
+    <!-- ─── Icon Buttons ──────────────────── -->
+    <div class="demo-section">
+        <h2>Botões de Ícone (com Tooltip)</h2>
+        <p class="demo-note">Passe o rato por cima para ver o tooltip.</p>
+
+        <h3>Default</h3>
+        <div class="demo-row" id="demo-icons-default"></div>
+
+        <h3>Primary</h3>
+        <div class="demo-row" id="demo-icons-primary"></div>
+
+        <h3>Danger</h3>
+        <div class="demo-row" id="demo-icons-danger"></div>
+
+        <h3>Tamanhos</h3>
+        <div class="demo-row" id="demo-icons-sizes"></div>
+    </div>
+
+    <!-- ─── Processing ────────────────────── -->
+    <div class="demo-section">
+        <h2>Animação Processing</h2>
+        <p class="demo-note">Clique num botão para simular uma operação que demora 3 segundos.</p>
+        <div class="demo-row" id="demo-processing"></div>
+    </div>
+
+    <!-- ─── Disabled ──────────────────────── -->
+    <div class="demo-section">
+        <h2>Estado Disabled</h2>
+        <div class="demo-row" id="demo-disabled"></div>
+    </div>
+
+    <!-- ─── Toolbar ───────────────────────── -->
+    <div class="demo-section">
+        <h2>Toolbar</h2>
+
+        <h3>Toolbar com borda</h3>
+        <div class="demo-toolbar-area" id="demo-toolbar-bordered"></div>
+
+        <h3>Toolbar com label</h3>
+        <div class="demo-toolbar-area" id="demo-toolbar-label"></div>
+
+        <h3>Toolbar sem borda</h3>
+        <div class="demo-toolbar-area" id="demo-toolbar-flat"></div>
+
+        <h3>Toolbar com grupos + separadores</h3>
+        <div class="demo-toolbar-area" id="demo-toolbar-groups"></div>
+    </div>
+
+    <!-- ─── Código de Exemplo ─────────────── -->
+    <div class="demo-section">
+        <h2>Como usar</h2>
+
+        <div class="demo-code">
+<span class="comment">// Botão com texto</span>
+<span class="keyword">const</span> btnSalvar = Buttons.<span class="prop">create</span>({
+    <span class="prop">text</span>: <span class="string">'Salvar'</span>,
+    <span class="prop">variant</span>: <span class="string">'primary'</span>,
+    <span class="prop">onClick</span>: () => { ... }
+});
+
+<span class="comment">// Botão com ícone + texto</span>
+<span class="keyword">const</span> btnApagar = Buttons.<span class="prop">create</span>({
+    <span class="prop">text</span>: <span class="string">'Apagar'</span>,
+    <span class="prop">icon</span>: Icons.trash,
+    <span class="prop">variant</span>: <span class="string">'danger'</span>,
+    <span class="prop">size</span>: <span class="string">'sm'</span>,
+    <span class="prop">onClick</span>: () => { ... }
+});
+
+<span class="comment">// Botão de ícone com tooltip</span>
+<span class="keyword">const</span> btnCopy = Buttons.<span class="prop">createIconButton</span>({
+    <span class="prop">icon</span>: Icons.copy,
+    <span class="prop">tooltip</span>: <span class="string">'Copiar'</span>,
+    <span class="prop">onClick</span>: () => { ... }
+});
+
+<span class="comment">// Toolbar com grupos</span>
+<span class="keyword">const</span> toolbar = Buttons.<span class="prop">createToolbar</span>({
+    <span class="prop">bordered</span>: <span class="keyword">true</span>,
+    <span class="prop">groups</span>: [
+        [btnCopy, btnDownload],
+        [btnEdit, btnTrash]
+    ]
+});
+container.<span class="prop">appendChild</span>(toolbar);
+
+<span class="comment">// Processing</span>
+Buttons.<span class="prop">startProcessing</span>(btnSalvar, <span class="string">'A guardar...'</span>);
+<span class="comment">// ... quando terminar:</span>
+Buttons.<span class="prop">stopProcessing</span>(btnSalvar);
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../icons/Icons.js?v=1.0"></script>
+    <script src="Buttons.js?v=1.0"></script>
+
+    <script>
+        // ── Variantes ──
+        const variants = [
+            { id: 'demo-primary',   variant: 'primary',   labels: ['Salvar', 'Confirmar', 'Enviar'] },
+            { id: 'demo-secondary', variant: 'secondary', labels: ['Cancelar', 'Fechar', 'Voltar'] },
+            { id: 'demo-danger',    variant: 'danger',    labels: ['Apagar', 'Remover', 'Eliminar'] },
+            { id: 'demo-ghost',     variant: 'ghost',     labels: ['Opções', 'Detalhes', 'Mais'] },
+        ];
+
+        variants.forEach(({ id, variant, labels }) => {
+            const container = document.getElementById(id);
+            labels.forEach(text => {
+                container.appendChild(Buttons.create({ text, variant }));
+            });
+        });
+
+        // ── Tamanhos ──
+        const sizesContainer = document.getElementById('demo-sizes');
+        ['sm', 'md', 'lg'].forEach(size => {
+            sizesContainer.appendChild(Buttons.create({
+                text: size.toUpperCase(),
+                variant: 'primary',
+                size,
+            }));
+        });
+
+        // ── Ícone + Texto ──
+        const iconTextContainer = document.getElementById('demo-icon-text');
+        iconTextContainer.appendChild(Buttons.create({ text: 'Salvar', icon: Icons.checkmark, variant: 'primary' }));
+        iconTextContainer.appendChild(Buttons.create({ text: 'Apagar', icon: Icons.trash, variant: 'danger' }));
+        iconTextContainer.appendChild(Buttons.create({ text: 'Transferir', icon: Icons.download, variant: 'secondary' }));
+        iconTextContainer.appendChild(Buttons.create({ text: 'Enviar', icon: Icons.upload, variant: 'ghost' }));
+
+        // ── Icon Buttons ──
+        const iconsData = [
+            { icon: Icons.copy,          tooltip: 'Copiar' },
+            { icon: Icons.download,      tooltip: 'Transferir' },
+            { icon: Icons.upload,        tooltip: 'Enviar' },
+            { icon: Icons.eye,           tooltip: 'Visualizar' },
+            { icon: Icons.fileText,      tooltip: 'Documento' },
+            { icon: Icons.generate,      tooltip: 'Gerar' },
+            { icon: Icons.messageCircle, tooltip: 'Comentar' },
+            { icon: Icons.user,          tooltip: 'Utilizador' },
+        ];
+
+        const iconsDefault = document.getElementById('demo-icons-default');
+        iconsData.forEach(d => iconsDefault.appendChild(Buttons.createIconButton(d)));
+
+        const iconsPrimary = document.getElementById('demo-icons-primary');
+        iconsData.slice(0, 4).forEach(d => iconsPrimary.appendChild(Buttons.createIconButton({ ...d, variant: 'primary' })));
+
+        const iconsDanger = document.getElementById('demo-icons-danger');
+        [{ icon: Icons.trash, tooltip: 'Apagar' }, { icon: Icons.close, tooltip: 'Fechar' }].forEach(d => {
+            iconsDanger.appendChild(Buttons.createIconButton({ ...d, variant: 'danger' }));
+        });
+
+        const iconsSizes = document.getElementById('demo-icons-sizes');
+        ['sm', 'md', 'lg'].forEach(size => {
+            iconsSizes.appendChild(Buttons.createIconButton({ icon: Icons.copy, tooltip: `Tamanho ${size.toUpperCase()}`, size }));
+        });
+
+        // ── Processing ──
+        const procContainer = document.getElementById('demo-processing');
+        const proc1 = Buttons.create({
+            text: 'Salvar',
+            icon: Icons.checkmark,
+            variant: 'primary',
+            onClick: () => {
+                Buttons.startProcessing(proc1, 'A guardar...');
+                setTimeout(() => Buttons.stopProcessing(proc1), 3000);
+            }
+        });
+        const proc2 = Buttons.create({
+            text: 'Apagar',
+            icon: Icons.trash,
+            variant: 'danger',
+            onClick: () => {
+                Buttons.startProcessing(proc2, 'A apagar...');
+                setTimeout(() => Buttons.stopProcessing(proc2), 3000);
+            }
+        });
+        const proc3 = Buttons.create({
+            text: 'Enviar',
+            variant: 'secondary',
+            onClick: () => {
+                Buttons.startProcessing(proc3);
+                setTimeout(() => Buttons.stopProcessing(proc3), 3000);
+            }
+        });
+        procContainer.appendChild(proc1);
+        procContainer.appendChild(proc2);
+        procContainer.appendChild(proc3);
+
+        // ── Disabled ──
+        const disabledContainer = document.getElementById('demo-disabled');
+        disabledContainer.appendChild(Buttons.create({ text: 'Primary', variant: 'primary', disabled: true }));
+        disabledContainer.appendChild(Buttons.create({ text: 'Secondary', variant: 'secondary', disabled: true }));
+        disabledContainer.appendChild(Buttons.create({ text: 'Danger', variant: 'danger', disabled: true }));
+        disabledContainer.appendChild(Buttons.create({ text: 'Ghost', variant: 'ghost', disabled: true }));
+        disabledContainer.appendChild(Buttons.createIconButton({ icon: Icons.copy, tooltip: 'Copiar', disabled: true }));
+
+        // ── Toolbars ──
+
+        // Toolbar bordered
+        const tb1 = Buttons.createToolbar({
+            bordered: true,
+            buttons: [
+                Buttons.createIconButton({ icon: Icons.copy,          tooltip: 'Copiar' }),
+                Buttons.createIconButton({ icon: Icons.download,      tooltip: 'Transferir' }),
+                Buttons.createIconButton({ icon: Icons.upload,        tooltip: 'Enviar' }),
+                Buttons.createIconButton({ icon: Icons.eye,           tooltip: 'Visualizar' }),
+                Buttons.createIconButton({ icon: Icons.trash,         tooltip: 'Apagar', variant: 'danger' }),
+            ]
+        });
+        document.getElementById('demo-toolbar-bordered').appendChild(tb1);
+
+        // Toolbar com label
+        const tb2 = Buttons.createToolbar({
+            bordered: true,
+            label: 'Ficheiro',
+            buttons: [
+                Buttons.createIconButton({ icon: Icons.fileText,  tooltip: 'Novo' }),
+                Buttons.createIconButton({ icon: Icons.download,  tooltip: 'Transferir' }),
+                Buttons.createIconButton({ icon: Icons.upload,    tooltip: 'Enviar' }),
+            ]
+        });
+        document.getElementById('demo-toolbar-label').appendChild(tb2);
+
+        // Toolbar sem borda
+        const tb3 = Buttons.createToolbar({
+            bordered: false,
+            buttons: [
+                Buttons.createIconButton({ icon: Icons.copy,          tooltip: 'Copiar' }),
+                Buttons.createIconButton({ icon: Icons.download,      tooltip: 'Transferir' }),
+                Buttons.createIconButton({ icon: Icons.eye,           tooltip: 'Visualizar' }),
+            ]
+        });
+        document.getElementById('demo-toolbar-flat').appendChild(tb3);
+
+        // Toolbar com grupos + separadores
+        const tb4 = Buttons.createToolbar({
+            bordered: true,
+            groups: [
+                [
+                    Buttons.createIconButton({ icon: Icons.copy,     tooltip: 'Copiar' }),
+                    Buttons.createIconButton({ icon: Icons.download, tooltip: 'Transferir' }),
+                    Buttons.createIconButton({ icon: Icons.upload,   tooltip: 'Enviar' }),
+                ],
+                [
+                    Buttons.createIconButton({ icon: Icons.eye,           tooltip: 'Visualizar' }),
+                    Buttons.createIconButton({ icon: Icons.messageCircle, tooltip: 'Comentar' }),
+                ],
+                [
+                    Buttons.createIconButton({ icon: Icons.trash, tooltip: 'Apagar', variant: 'danger' }),
+                ]
+            ]
+        });
+        document.getElementById('demo-toolbar-groups').appendChild(tb4);
+    </script>
+
+</body>
+</html>

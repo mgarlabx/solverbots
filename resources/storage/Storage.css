@@ -1,0 +1,303 @@
+.storage-btn {
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.storage-btn::after {
+    display: none;
+}
+
+.storage-btn:hover {
+    background: var(--app-bg-tertiary);
+    color: var(--app-text-secondary);
+    transform: scale(1.1);
+}
+
+
+.storage-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Storage Modal */
+.storage-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--app-overlay);
+    z-index: 10001;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.storage-modal.show {
+    display: flex;
+}
+
+.storage-modal-content {
+    background: var(--app-bg-secondary);
+    border-radius: 12px;
+    width: 90%;
+    height: 80%;
+    max-width: 900px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+.storage-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--app-border-color);
+}
+
+.storage-modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--app-text-primary);
+}
+
+.storage-modal-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.storage-modal-action {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    color: var(--app-text-secondary);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.storage-modal-action:hover {
+    background: var(--app-bg-tertiary);
+    color: var(--app-text-primary);
+    transform: scale(1.1);
+}
+
+.storage-modal-action svg {
+    width: 20px;
+    height: 20px;
+}
+
+.storage-modal-close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    color: var(--app-text-secondary);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.storage-modal-close:hover {
+    background: var(--app-bg-tertiary);
+    color: var(--app-text-primary);
+}
+
+.storage-modal-close svg {
+    width: 24px;
+    height: 24px;
+}
+
+.storage-modal-body {
+    padding: 1.5rem;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.storage-info {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: var(--app-bg-tertiary);
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.storage-info strong {
+    color: var(--app-text-primary);
+}
+
+.storage-info span {
+    color: var(--app-primary-color);
+    font-family: 'Courier New', monospace;
+}
+
+.storage-content {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    height: calc(100% - 4rem);
+}
+
+/* JSON Viewer Styles */
+.json-item {
+    margin-left: 1.5rem;
+}
+
+.json-line {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.125rem 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.json-line:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.json-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 0.25rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    color: #94a3b8;
+    transition: transform 0.2s ease;
+}
+
+.json-toggle.expanded {
+    transform: rotate(90deg);
+}
+
+.json-toggle svg {
+    width: 14px;
+    height: 14px;
+}
+
+.json-key {
+    color: #60a5fa;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+.json-colon {
+    color: #94a3b8;
+    margin-right: 0.5rem;
+}
+
+.json-value {
+    color: #e2e8f0;
+}
+
+.json-value.string {
+    color: #86efac;
+}
+
+.json-value.number {
+    color: #fbbf24;
+}
+
+.json-value.boolean {
+    color: #c084fc;
+}
+
+.json-value.null {
+    color: #94a3b8;
+    font-style: italic;
+}
+
+.json-bracket {
+    color: #94a3b8;
+    font-weight: bold;
+}
+
+.json-children {
+    display: none;
+    margin-left: 0.5rem;
+}
+
+.json-children.expanded {
+    display: block;
+}
+
+.json-empty {
+    color: #94a3b8;
+    font-style: italic;
+}
+
+.json-count {
+    color: #94a3b8;
+    font-size: 0.8em;
+    margin-left: 0.5rem;
+}
+
+.json-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    padding: 0.25rem;
+    border-radius: 4px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+
+.json-line:hover .json-delete {
+    opacity: 1;
+}
+
+.json-delete:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.json-delete svg {
+    width: 14px;
+    height: 14px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

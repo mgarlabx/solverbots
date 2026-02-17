@@ -1,0 +1,52 @@
+/* ========================================
+   Footer.css - Estilos do Footer
+   ======================================== */
+
+/* Container do Footer */
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    height: 48px;
+    min-height: 48px;
+    background: var(--app-bg-secondary);
+    border-top: 1px solid var(--app-border-color);
+    position: relative;
+    z-index: 100;
+}
+
+/* Lado esquerdo: ícone do cubo */
+.footer-left {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Lado direito: texto */
+.footer-right {
+    display: flex;
+    align-items: center;
+}
+
+.footer-text {
+    font-size: 0.8rem;
+    color: var(--app-text-secondary);
+}
+
+.footer-text a {
+    color: var(--app-primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.footer-text a:hover {
+    color: var(--app-primary-hover);
+    text-decoration: underline;
+}

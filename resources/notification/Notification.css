@@ -1,0 +1,86 @@
+.app-notification {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--app-bg-secondary);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    z-index: 10002;
+    opacity: 0;
+    transition: all 0.3s ease;
+    max-width: 500px;
+    min-width: 300px;
+}
+
+.app-notification-show {
+    top: 2rem;
+    opacity: 1;
+}
+
+.app-notification-hide {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+}
+
+.app-notification-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.app-notification-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.app-notification-message {
+    color: var(--app-text-primary);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Notification Types */
+.app-notification-success {
+    border-left: 4px solid #10b981;
+}
+
+.app-notification-success .app-notification-icon {
+    background-color: #d1fae5;
+    color: #10b981;
+}
+
+.app-notification-error {
+    border-left: 4px solid #ef4444;
+}
+
+.app-notification-error .app-notification-icon {
+    background-color: #fee2e2;
+    color: #ef4444;
+}
+
+.app-notification-warning {
+    border-left: 4px solid #f59e0b;
+}
+
+.app-notification-warning .app-notification-icon {
+    background-color: #fef3c7;
+    color: #f59e0b;
+}
+
+.app-notification-info {
+    border-left: 4px solid #3b82f6;
+}
+
+.app-notification-info .app-notification-icon {
+    background-color: #dbeafe;
+    color: #3b82f6;
+}
