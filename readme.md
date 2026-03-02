@@ -156,7 +156,7 @@ Visual components organized by functionality:
 - **AI:** OpenAI API
 - **External dependencies:**
   - [Marked](https://github.com/markedjs/marked) — Markdown rendering
-  - [SolverJS](https://solvertank.tech/solverjs/) — Utility library
+  - [SolverJS](https://github.com/mgarlabx/solverjs) — Utility library
 
 ---
 
